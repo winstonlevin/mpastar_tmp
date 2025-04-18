@@ -9,6 +9,7 @@ namespace py = pybind11;
 void init_dubins(py::module_ m);
 void init_astar(py::module_ m);
 void init_rational_trig(py::module_ m);
+void init_dubins_astar(py::module_ m);
 
 PYBIND11_MODULE(_core, m) {
     m.doc() = "mpastar";
@@ -19,6 +20,7 @@ PYBIND11_MODULE(_core, m) {
     py::module_ graphs = m.def_submodule("graphs", "Graph search submodule of mpastar");
     init_astar(graphs);
     init_rational_trig(graphs);
+    init_dubins_astar(graphs);
 
 #ifdef VERSION_INFO
     m.attr("__version__") = MACRO_STRINGIFY(VERSION_INFO);
