@@ -26,6 +26,7 @@ python_add_library(
     src/pybind_module.cpp
     src/dubins_pybind.cpp
     src/astar_pybind.cpp
+    src/rational_trig_pybind.cpp
   WITH_SOABI
 )
 target_link_libraries(_core PRIVATE pybind11::headers)
@@ -33,6 +34,7 @@ target_link_libraries(_core PRIVATE pybind11::headers)
 # Add C++ libraries that interface with _core
 add_library(dubins_cpp STATIC src/dubins.cpp)
 add_library(astar_cpp STATIC src/astar.cpp)
+add_library(rational_trig_cpp STATIC src/rational_trig.cpp)
 
 # Library linkeages
 target_link_libraries(
@@ -40,6 +42,7 @@ target_link_libraries(
   PRIVATE
     dubins_cpp
     astar_cpp
+    rational_trig_cpp
 )
 
 # This is passing in the version as a define just as an example
@@ -50,6 +53,7 @@ install(
   TARGETS
     dubins_cpp
     astar_cpp
+    rational_trig_cpp
     _core
   DESTINATION
     mpastar
